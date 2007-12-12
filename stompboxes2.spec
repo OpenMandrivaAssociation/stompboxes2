@@ -1,6 +1,6 @@
 %define name	stompboxes2
 %define version 0.3
-%define release 2mdk
+%define release %mkrel 2
 
 Summary:	This is Stompboxes2, a real-time audio effects processor.
 Name:		%{name}
