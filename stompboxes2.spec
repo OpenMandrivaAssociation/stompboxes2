@@ -16,7 +16,6 @@ Source3:	%{name}48.png
 Patch0:		stompboxes2-0.3-misc_fixes.patch.bz2
 Requires:	libgtk+1.2
 BuildRequires:	libgtk+1.2-devel
-BuildRoot:	%{_tmppath}/%{name}-root
 
 %description
 StompBoxes is a real-time audio effects processor designed
