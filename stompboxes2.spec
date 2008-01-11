@@ -44,7 +44,7 @@ annoying noise making maCHine that ever existed.
 
 install -d %{buildroot}%{_miconsdir}
 install -d %{buildroot}%{_liconsdir}
-install -d %{buildroot}%{_menudir}
+mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications/
 
 # Icons
 install -m 644 %{SOURCE1} %{buildroot}%{_miconsdir}/%{name}.png
@@ -52,20 +52,25 @@ install -m 644 %{SOURCE2} %{buildroot}%{_iconsdir}/%{name}.png
 install -m 644 %{SOURCE3} %{buildroot}%{_liconsdir}/%{name}.png
 
 # Menu
-cat << EOF > %{buildroot}%{_menudir}/%{name}
-?package(%{name}): needs="x11" \\
-section="Multimedia/Sound" \\
-title="StompBoxes" \\
-longtitle="%{summary}" \\
-command="%{name}" \\
-icon="%{name}.png"
-?package(%{name}): needs="x11" \\
-section="Documentation" \\
-title="StompBoxes" \\
-longtitle="StompBoxes" \\
-command="if ps U \$USER | grep -q \$BROWSER; then \$BROWSER -remote \'openURL(%{url})\'; else \$BROWSER \'%{url}\'; fi" \\
-icon="%{name}.png"
+cat << EOF > %buildroot%{_datadir}/applications/mandriva-%{name}.desktop
+[Desktop Entry]
+Type=Application
+Categories=Audio;
+Name=StompBoxes
+Comment=%{summary}
+Exec=%{name}
+Icon=%{name}
 EOF
+
+#cat << EOF > %buildroot%{_datadir}/applications/mandriva-%{name}-doc.desktop
+#[Desktop Entry]
+#Type=Application
+#Categories=Documentation
+#Name=StompBoxes
+#Comment=StompBoxes
+#Exec=www-broser %{url}
+#Icon=%{name}
+#EOF
 
 %clean
 [ -n "%{buildroot}" -a "%{buildroot}" != / ] && rm -rf %{buildroot}
@@ -86,7 +91,7 @@ EOF
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/pixmaps
 %{_datadir}/%{name}/pixmaps/*
-%{_menudir}/%{name}
+%{_datadir}/applications/mandriva-%{name}.desktop
 %{_iconsdir}/%{name}.png
 %{_miconsdir}/%{name}.png
 %{_liconsdir}/%{name}.png
