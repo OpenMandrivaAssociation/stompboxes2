@@ -9,7 +9,7 @@ Release:	%{release}
 License:	GPL
 Group:		Sound
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-URL:		http://mrbook.org/stompboxes/
+URL:		https://mrbook.org/stompboxes/
 Source0:	%{name}-%{version}.tar.bz2
 Source1:	%{name}16.png
 Source2:	%{name}32.png
