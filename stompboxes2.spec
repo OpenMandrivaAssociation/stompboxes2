@@ -15,6 +15,11 @@ Source1:	%{name}16.png
 Source2:	%{name}32.png
 Source3:	%{name}48.png
 Patch0:		stompboxes2-0.3-misc_fixes.patch.bz2
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	gtk-devel
 
 %description
